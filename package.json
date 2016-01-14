@@ -1,0 +1,19 @@
+{
+  "name": "alphabet-diamond-node",
+  "version": "1.0.0",
+  "description": "A TW Coding Challenge",
+  "main": "go.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watsonarw/alphabet-diamond-node.git"
+  },
+  "author": "Andrew Watson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watsonarw/alphabet-diamond-node/issues"
+  },
+  "homepage": "https://github.com/watsonarw/alphabet-diamond-node#readme"
+}
