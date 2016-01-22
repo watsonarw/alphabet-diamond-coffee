@@ -1,7 +1,4 @@
-String::repeat = (n) -> Array(n+1).join(this)
-String::until = (substring) -> this[..(substring.length + this.indexOf(substring) - 1)]
-String::append = (addition) -> "#{this}#{addition}"
-Array::removeLast = () -> this[...-1]
+require './sugar'
 
 class Diamond
   ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -20,7 +17,7 @@ class Diamond
       gapSpaces = 2 * i - 1
       line = line.append(' '.repeat gapSpaces).append(letter) if gapSpaces > 0
       lines.push(line)
-    @diamondLines = lines.concat lines.removeLast().reverse()
+    @diamondLines = lines.concat lines.excludeLast().reverse()
 
   ensureValidInput = (input) ->
     return false unless input
