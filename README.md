@@ -1,5 +1,5 @@
-# alphabet-diamond-node
-A TW Coding Challenge
+# alphabet-diamond-coffee
+A TW Shokunin Coding Challenge
 
 
 ## The Challenge
@@ -23,3 +23,28 @@ Inputs are `[a-zA-Z]` (e.g. letters only, upper or lower case). Output is upper 
 * If you input "a" or "A", then he output is simply "A".
 * If the input is invalid, then the output is "INVALID INPUT".
 * If you read from keyboard input you may ask the user for a new input.
+
+## Requirements
+* Nodejs and NPM (recommend installing via [NVM](https://github.com/creationix/nvm))
+
+## Running the app
+
+#### Setup
+
+  ```bash
+    npm install
+  ```
+
+#### Unit tests
+
+  ```bash
+    npm test
+  ```
+
+#### Running
+
+  ```bash
+    npm start <letter>
+  ```
+
+  Where `<letter>` is the input letter (without `<` `>`)
