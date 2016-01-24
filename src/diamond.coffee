@@ -5,19 +5,29 @@ class Diamond
   INVALID_INPUT = "INVALID INPUT"
 
   constructor: (input) ->
-    @stopLetter = ensureValidInput(input)
-    return unless @stopLetter
+    stopLetter = ensureValidInput(input)
+    return unless stopLetter
+    @diamondLines = createLines(stopLetter)
 
-    last = ALPHABET.indexOf @stopLetter
+  createLines = (stopLetter) ->
+    pivotLineNumber = ALPHABET.indexOf stopLetter
 
     lines = []
-    for letter in ALPHABET.until @stopLetter
-      i = lines.length
-      line = ' '.repeat(last - i).append(letter)
-      gapSpaces = 2 * i - 1
-      line = line.append(' '.repeat gapSpaces).append(letter) if gapSpaces > 0
-      lines.push(line)
-    @diamondLines = lines.concat lines.excludeLast().reverse()
+    letters = ALPHABET.until stopLetter
+    for letter in letters
+      currentLineNumber = lines.length
+      line = lineFor letter, currentLineNumber, pivotLineNumber
+      lines.push line
+
+    lines.mirror()
+
+  lineFor = (letter, currentLineNumber, pivotLineNumber) ->
+    gap = ' '.repeat(gapLengthFor currentLineNumber )
+    line = "#{letter}#{if gap then gap + letter else ''}"
+    line.indent(pivotLineNumber - currentLineNumber)
+
+  gapLengthFor = (lineNumber) ->
+    2 * lineNumber - 1
 
   ensureValidInput = (input) ->
     return false unless input

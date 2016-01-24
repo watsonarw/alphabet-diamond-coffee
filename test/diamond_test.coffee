@@ -6,6 +6,9 @@ behavesLikeAValidDiamond = (diamond, expectedLines) ->
   diamondString = diamond.toString()
 
   it "has #{expectedLines.length} lines", -> diamondString.split('\n').length == expectedLines.length
+  it "is has the same lines backwards as it has forwards", ->
+    diamondLines = diamondString.split('\n')
+    expect(diamondLines).to.equal diamondLines.reverse()
   it 'has the correct lines', ->
     expectedString = expectedLines.join '\n'
     expect(diamondString).to.equal expectedString
