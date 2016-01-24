@@ -29,22 +29,12 @@ Inputs are `[a-zA-Z]` (e.g. letters only, upper or lower case). Output is upper 
 
 ## Running the app
 
-#### Setup
+This repository has a [go script](https://www.thoughtworks.com/insights/blog/praise-go-script-part-i).
 
-  ```bash
-    npm install
-  ```
+Just run:
 
-#### Unit tests
+```bash
+  ./go
+```
 
-  ```bash
-    npm test
-  ```
-
-#### Running
-
-  ```bash
-    npm start <letter>
-  ```
-
-  Where `<letter>` is the input letter (without `<` `>`)
+from to project root directory and follow the instructions!
