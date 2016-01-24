@@ -1,5 +1,5 @@
 Diamond = require './diamond'
 
-args = process.argv[2]
-diamond = new Diamond(args);
+inputLetter = process.argv[2]
+diamond = new Diamond inputLetter
 console.log diamond.toString()

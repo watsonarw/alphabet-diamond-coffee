@@ -2,7 +2,9 @@ chai = require 'chai'
 expect = chai.expect
 Diamond = require '../src/diamond'
 
-behavesLikeAValidDiamond = (diamond, expectedLines) ->
+behavesLike = {}
+
+behavesLike.aValidDiamond = (diamond, expectedLines) ->
   diamondString = diamond.toString()
 
   it "has #{expectedLines.length} lines", -> diamondString.split('\n').length == expectedLines.length
@@ -13,12 +15,12 @@ behavesLikeAValidDiamond = (diamond, expectedLines) ->
     expectedString = expectedLines.join '\n'
     expect(diamondString).to.equal expectedString
 
-behavesLikeAnInvalidDiamond = (diamond) ->
+behavesLike.anInvalidDiamond = (diamond) ->
   it 'is invalid', -> expect(diamond.toString()).to.equal 'INVALID INPUT'
 
 describe 'A diamond constructed with', ->
   describe 'e', ->
-    behavesLikeAValidDiamond(
+    behavesLike.aValidDiamond(
       new Diamond('e'),
       [
         '    A'
@@ -34,7 +36,7 @@ describe 'A diamond constructed with', ->
     )
 
   describe 'D', ->
-    behavesLikeAValidDiamond(
+    behavesLike.aValidDiamond(
       new Diamond('D'),
       [
         '   A'
@@ -47,30 +49,34 @@ describe 'A diamond constructed with', ->
       ]
     )
   describe 'A', ->
-    behavesLikeAValidDiamond(
+    behavesLike.aValidDiamond(
       new Diamond('A'),
       [
         'A'
       ]
     )
 
+  describe 'diamonds constructed with lowercase or uppercase letter', ->
+    it 'should be the same', ->
+      expect(new Diamond('l').toString()).to.equal new Diamond('L').toString()
+
   describe 'a number', ->
-    behavesLikeAnInvalidDiamond new Diamond(1)
+    behavesLike.anInvalidDiamond new Diamond(1)
 
   describe 'an array', ->
-    behavesLikeAnInvalidDiamond new Diamond(['E'])
+    behavesLike.anInvalidDiamond new Diamond(['E'])
 
   describe 'a non alphabetic string', ->
-    behavesLikeAnInvalidDiamond new Diamond('1')
+    behavesLike.anInvalidDiamond new Diamond('1')
 
   describe 'a non alphanumeric string', ->
-    behavesLikeAnInvalidDiamond new Diamond('!')
+    behavesLike.anInvalidDiamond new Diamond('!')
 
   describe 'an empty string', ->
-    behavesLikeAnInvalidDiamond new Diamond('')
+    behavesLike.anInvalidDiamond new Diamond('')
 
   describe 'a string with more than one letter', ->
-    behavesLikeAnInvalidDiamond new Diamond('ZZ')
+    behavesLike.anInvalidDiamond new Diamond('ZZ')
 
   describe 'a string with more than one different letter', ->
-    behavesLikeAnInvalidDiamond new Diamond('St')
+    behavesLike.anInvalidDiamond new Diamond('St')
